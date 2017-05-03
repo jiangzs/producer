@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--<include resource="org/springframework/boot/logging/logback/base.xml"/>-->
+    <!--<include resource="org/springframework/boot/logging/logback/console-appender.xml"/>-->
+    <!--<include resource="org/springframework/boot/logging/logback/file-appender.xml"/>-->
+
+    <property name="LOG_PATH" value="${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}"/>
+
+    <!--<springProperty scope="context" name="appName" source="spring.application.name"/>-->
+    <!--<springProperty scope="context" name="appId" source="spring.application.index" default="1"/>-->
+
+    <!--<springProperty scope="context" name="host" source="log.spring.rabbitmq.host" default="localhost"/>-->
+    <!--<springProperty scope="context" name="port" source="log.spring.rabbitmq.port" default="5672"/>-->
+    <!--<springProperty scope="context" name="username" source="log.spring.rabbitmq.username" default="guest"/>-->
+    <!--<springProperty scope="context" name="password" source="log.spring.rabbitmq.password" default="guest"/>-->
+
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder 默认配置为PatternLayoutEncoder -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--<appender name="AMQP" class="org.springframework.amqp.rabbit.logback.AmqpAppender">-->
+    <!--<layout>-->
+    <!--<pattern><![CDATA[%d %p %t [%c] - <%m>%n ]]></pattern>-->
+    <!--</layout>-->
+
+    <!--<host>${host}</host>-->
+    <!--<port>${port}</port>-->
+    <!--<username>${username}</username>-->
+    <!--<password>${password}</password>-->
+
+
+    <!--<abbreviation>36</abbreviation>-->
+    <!--<includeCallerData>true</includeCallerData>-->
+    <!--<applicationId>${appName:-}.${appId:-}</applicationId>-->
+    <!--<routingKeyPattern>%p.${appName:-}</routingKeyPattern>-->
+    <!--<generateId>true</generateId>-->
+    <!--<charset>UTF-8</charset>-->
+    <!--<durable>true</durable>-->
+    <!--<exchangeName>logs</exchangeName>-->
+    <!--<exchangeType>topic</exchangeType>-->
+    <!--<deliveryMode>PERSISTENT</deliveryMode>-->
+    <!--<declareExchange>true</declareExchange>-->
+    <!--</appender>-->
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <!--<appender-ref ref="FILE"/>-->
+        <!--<appender-ref ref="AMQP"/>-->
+    </root>
+</configuration>
